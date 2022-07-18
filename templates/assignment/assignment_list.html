@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title> Assignments</title>
+{% endblock  %}
+{% block content %}
+
+
+
+<div style="padding-top: 10px" >
+<h1 class="title">Assignments</h1>
+ <hr  class="is-divider">
+
+<table class="table table-hover is-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Assignment Title</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">Due Date
+      {%if user.user_type == 2%}
+      <th scope="col">
+      <button><a href="{%url 'assignment:create' %}">Add</a></button></th>
+      {%endif%}
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for assignment in object_list %}
+    <tr>
+      <th scope="row">{{assignment.id}}</th>
+      {% if user.user_type == 1%}
+      <td><a href="/detail/{{assignment.id}}"> {{assignment.assignment_name}}</a></td>
+      {% else %}
+      <td><a href="/submission-detail/{{assignment.id}}"> {{assignment.assignment_name}}</a></td>
+      {% endif %}
+      <td>{{assignment.start_date}}</td>
+      <td>{{assignment.due_date}}</td>
+    </tr>
+  {% endfor%}
+
+  </tbody>
+</table>
+</div>
+{% endblock %}

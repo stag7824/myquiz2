@@ -1,0 +1,69 @@
+<!doctype html>
+<link rel="stylesheet" href="../static/courses/course_list.css">
+{% extends "base.html" %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../static/courses/course_list.css">
+
+    <title>Courses</title>
+
+</head>
+<body>
+
+{% block content %}
+
+    <div class="container">
+
+        <div style="padding: 10px">
+            <h1 id="heading" style="font-size: 50px">{{ course.course_name }}</h1>
+        </div>
+
+        <div class="container">
+            <div class="container">
+                <div class="row">
+
+
+                    <div class="col-sm-4">
+
+                        <div class="box box-down blue">
+                            <h2>
+                                <a class="box-name" href="{% url  'quiz:quizzes' course.id %}">Quizzes</a>
+                            </h2>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+
+                        <div class="box box-down blue">
+                            <h2>
+                                <a class="box-name" href="{% url  'assignment:assgn-list' course.id %}">Assignments</a>
+                            </h2>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+
+                        <div class="box box-down blue">
+                            <h2>
+                                <a class="box-name"
+                                   href="{% url  'announcements:announcement-list' %}">Announcements</a>
+                            </h2>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock content %}
+</div>
+</body>
+</html>

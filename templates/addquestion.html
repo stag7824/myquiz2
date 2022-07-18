@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Creation</title>
+
+</head>
+<body>
+{% block content %}
+    {% load crispy_forms_tags %}
+
+    <a href="/" class="button">Go Back</a>
+
+
+    <div class="container">
+        <div >
+            <h2>Add Questions</h2>
+
+            <form action="" method="POST" class="requires-validation" novalidate>
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                {{ form|crispy }}
+
+                <div class="form-button mt-3">
+                    <button id="submit" type="submit" class="btn btn-primary">NEXT</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+</body>
+</html>
